@@ -31,22 +31,25 @@ This approach keeps the initial system simple while allowing individual capabili
 
 ## 3. High-Level Architecture
 
+```mermaid
 flowchart TD
-    User[User / API Client]
-
-    subgraph Application["Spring Boot Application"]
-        Controller[REST Controllers]
-        Service[Service Layer]
-        Repository[Repository Layer]
-
-        Controller --> Service
-        Service --> Repository
-    end
-
-    Database[(H2 Database)]
+    User["User / API Client"]
+    Controller["REST Controllers"]
+    Service["Service Layer"]
+    Repository["Repository Layer"]
+    Database[("H2 Database")]
 
     User --> Controller
+    Controller --> Service
+    Service --> Repository
     Repository --> Database
+
+    style User fill:#191f50,stroke:#343b70,color:#9bbcff
+    style Controller fill:#191f50,stroke:#343b70,color:#9bbcff
+    style Service fill:#191f50,stroke:#343b70,color:#9bbcff
+    style Repository fill:#191f50,stroke:#343b70,color:#9bbcff
+    style Database fill:#191f50,stroke:#343b70,color:#9bbcff
+```
 
 ## 4. Application Components
 
